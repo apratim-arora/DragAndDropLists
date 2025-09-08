@@ -7,6 +7,7 @@ import 'package:responsive_1/src/features/priority_view/presentation/widgets.dar
 class DragAndDropItem implements DragAndDropInterface {
   /// The child widget of this item.
  Widget child;
+ Function(Article,bool)? onArticleDataCallback; // added this line for supporting callback as demanded by Taiwo
 
   /// Widget when draggable
   Widget? feedbackWidget;
@@ -36,7 +37,7 @@ class DragAndDropItem implements DragAndDropInterface {
     if (isFolder) {
       child = MyFeedbackWidget(title);
     } else {
-      child = DragAndDropContainer(article!);
+      child = DragAndDropContainer(article!,onArticleDataCallback: this.onArticleDataCallback,);//passed the callback here
     }
     if (feedbackWidget == null) {
       var fb = MyFeedbackWidget(title);
