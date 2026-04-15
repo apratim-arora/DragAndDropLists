@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:responsive_1/src/features/priority_view/presentation/controllers/priorities_controller.dart';
 import 'package:responsive_1/src/features/priority_view/presentation/controllers/priority_view_controllers.dart';
-import 'package:responsive_1/src/features/priority_view/presentation/widgets.dart';
+import 'package:responsive_1/src/features/priority_view/presentation/widgets/widgets.dart';
 
 class DragAndDropListWrapper extends ConsumerStatefulWidget {
   final DragAndDropListInterface dragAndDropList;
