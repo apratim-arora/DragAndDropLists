@@ -1,13 +1,13 @@
+
 import 'package:drag_and_drop_lists/drag_and_drop_interface.dart';
 import 'package:flutter/material.dart'; //additional
 import 'package:flutter/widgets.dart';
 import 'package:responsive_1/src/features/articles/domain/article_models.dart'; // additional import referencing Article & Priority classes in my project.
-import 'package:responsive_1/src/features/priority_view/presentation/widgets.dart'; //additional
+import 'package:responsive_1/src/features/priority_view/presentation/widgets/widgets.dart'; //additional
 
 class DragAndDropItem implements DragAndDropInterface {
   /// The child widget of this item.
- Widget child;
- Function(Article,bool)? onArticleDataCallback; // added this line for supporting callback as demanded by Taiwo
+  Widget child;
 
   /// Widget when draggable
   Widget? feedbackWidget;
@@ -24,6 +24,7 @@ class DragAndDropItem implements DragAndDropInterface {
   final List<DragAndDropItem> children;
   DragAndDropItem? parent;
 
+
   DragAndDropItem({
     this.feedbackWidget,
     this.canDrag = true,
@@ -33,11 +34,13 @@ class DragAndDropItem implements DragAndDropInterface {
     required this.title,
     Iterable<DragAndDropItem>? childList,
     this.article,
+    Function(Article, bool)? onartiCleDataCallback,
   }) : children = <DragAndDropItem>[] {
     if (isFolder) {
       child = MyFeedbackWidget(title);
     } else {
-      child = DragAndDropContainer(article!,onArticleDataCallback: this.onArticleDataCallback,);//passed the callback here
+      child = DragAndDropContainer(article!,
+          onArticleDataCallback: onartiCleDataCallback);
     }
     if (feedbackWidget == null) {
       var fb = MyFeedbackWidget(title);
@@ -60,6 +63,7 @@ class DragAndDropItem implements DragAndDropInterface {
     String? title,
     Article? article,
     List<DragAndDropItem>? children,
+  //  Function(Article, bool) onartiCleDataCallback;
   }) {
     return DragAndDropItem(
       child: child ?? this.child,
@@ -68,6 +72,7 @@ class DragAndDropItem implements DragAndDropInterface {
       key: key ?? this.key,
       title: title ?? this.title,
       article: article ?? this.article,
+     // onartiCleDataCallback: onartiCleDataCallback ?? this.onartiCleDataCallback,
     );
   }
 }
