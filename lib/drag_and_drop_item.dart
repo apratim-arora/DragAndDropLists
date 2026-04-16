@@ -1,9 +1,9 @@
-
 import 'package:drag_and_drop_lists/drag_and_drop_interface.dart';
 import 'package:flutter/material.dart'; //additional
 import 'package:flutter/widgets.dart';
-import 'package:responsive_1/src/features/articles/domain/article_models.dart'; // additional import referencing Article & Priority classes in my project.
-import 'package:responsive_1/src/features/priority_view/presentation/widgets/widgets.dart'; //additional
+import 'package:responsive_1/src/features/articles/domain/article_models.dart';
+import 'package:responsive_1/src/features/priority_view/presentation/widgets/drag_and_drop_container.dart';
+import 'package:responsive_1/src/features/priority_view/presentation/widgets/feedback_widget.dart'; // additional import referencing Article & Priority classes in my project.
 
 class DragAndDropItem implements DragAndDropInterface {
   /// The child widget of this item.
@@ -23,7 +23,6 @@ class DragAndDropItem implements DragAndDropInterface {
   Article? article;
   final List<DragAndDropItem> children;
   DragAndDropItem? parent;
-
 
   DragAndDropItem({
     this.feedbackWidget,
@@ -63,7 +62,7 @@ class DragAndDropItem implements DragAndDropInterface {
     String? title,
     Article? article,
     List<DragAndDropItem>? children,
-  //  Function(Article, bool) onartiCleDataCallback;
+    //  Function(Article, bool) onartiCleDataCallback;
   }) {
     return DragAndDropItem(
       child: child ?? this.child,
@@ -72,7 +71,7 @@ class DragAndDropItem implements DragAndDropInterface {
       key: key ?? this.key,
       title: title ?? this.title,
       article: article ?? this.article,
-     // onartiCleDataCallback: onartiCleDataCallback ?? this.onartiCleDataCallback,
+      // onartiCleDataCallback: onartiCleDataCallback ?? this.onartiCleDataCallback,
     );
   }
 }
